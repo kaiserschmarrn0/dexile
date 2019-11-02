@@ -1,7 +1,7 @@
 import bindbc.sdl;
 import bindbc.opengl;
 
-import stb.image.binding;
+import stb.image;
 
 //import imgui;
 
@@ -89,15 +89,12 @@ extern(C) void main() {
         GLSupport sup = loadOpenGL();
         print(cast(int)sup);
         if (sup != GLSupport.gl45) {
-            die("failed to load opengl 4.5.");
+            warn("failed to load opengl 4.5.");
         }
         
-        info("loaded opengl 4.5.");
+        info("loaded opengl ", sup, ".");
     }
-	SDL_Init(0);
-
-    const GLSupport support = loadOpenGL();
-
+	
     ImGui.CreateContext();
 
     int w, h, channels;

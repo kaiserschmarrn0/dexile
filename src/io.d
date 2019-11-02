@@ -97,7 +97,7 @@ int format_type(T : int)(char[] str, T val) if (is(T == enum)) {
         return esnprintf(str, "%s (%d)", names[val], val);
     }
     
-    return esnprintf(str, "%d", names[val], val);
+    return esnprintf(str, "%d", val);
 }
 
 int format_type(T)(char[] str, T val) if (!isArray!(T) && !isPointer!(T)) {
