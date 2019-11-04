@@ -40,7 +40,7 @@ static if(glSupport >= GLSupport.gl46) {
         alias pglMultiDrawElementsIndirectCount = void function( GLenum,const(void)*,GLintptr,GLsizei,GLsizei );
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglSpecializeShader glSpecializeShader;
         pglMultiDrawArraysIndirectCount glMultiDrawArraysIndirectCount;
         pglMultiDrawElementsIndirectCount glMultiDrawElementsIndirectCount;

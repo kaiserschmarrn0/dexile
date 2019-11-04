@@ -76,7 +76,7 @@ static if(useARBDrawElementsBaseVertex) {
         alias pglMultiDrawElementsBaseVertex = void function(GLenum, const(GLsizei)*, GLenum, const(GLvoid*)*, GLsizei, const(GLint)*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglDrawElementsBaseVertex glDrawElementsBaseVertex;
         pglDrawRangeElementsBaseVertex glDrawRangeElementsBaseVertex;
         pglDrawElementsInstancedBaseVertex glDrawElementsInstancedBaseVertex;
@@ -136,7 +136,7 @@ static if(useARBSync) {
         alias pglGetSynciv = void function(GLsync, GLenum, GLsizei, GLsizei*, GLint*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglFenceSync glFenceSync;
         pglIsSync glIsSync;
         pglDeleteSync glDeleteSync;
@@ -201,7 +201,7 @@ static if(useARBTextureMultiSample) {
         alias pglSampleMaski = void function(GLuint, GLbitfield);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglTexImage2DMultisample glTexImage2DMultisample;
         pglTexImage3DMultisample glTexImage3DMultisample;
         pglGetMultisamplefv glGetMultisamplefv;

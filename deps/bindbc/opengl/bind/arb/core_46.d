@@ -28,7 +28,7 @@ static if(useARBPolygonOffsetClamp) {
     enum uint GL_POLYGON_OFFSET_CLAMP = 0x8E1B;
 
     extern(System) @nogc nothrow alias pglPolygonOffsetClamp = void function( GLfloat,GLfloat,GLfloat );
-    __gshared pglPolygonOffsetClamp glPolygonOffsetClamp;
+    extern(C++) __gshared pglPolygonOffsetClamp glPolygonOffsetClamp;
 
     private @nogc nothrow
     bool loadARBPolygonOffsetClamp(SharedLib lib, GLSupport contextVersion)

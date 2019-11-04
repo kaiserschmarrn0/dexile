@@ -31,7 +31,7 @@ static if(useARBBaseInstance) {
         alias pglDrawElementsInstancedBaseVertexBaseInstance = void function(GLenum, GLsizei, GLenum, const(void)*, GLsizei, GLint, GLuint);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglDrawArraysInstancedBaseInstance glDrawArraysInstancedBaseInstance;
         pglDrawElementsInstancedBaseInstance glDrawElementsInstancedBaseInstance;
         pglDrawElementsInstancedBaseVertexBaseInstance glDrawElementsInstancedBaseVertexBaseInstance;
@@ -81,7 +81,7 @@ static if(useARBInternalFormatQuery) {
 
     enum uint GL_NUM_SAMPLE_COUNTS = 0x9380;
     extern(System)  alias pglGetInternalformativ = void function(GLenum, GLenum, GLenum, GLsizei, GLint*);
-    __gshared pglGetInternalformativ glGetInternalformativ;
+    extern(C++) __gshared pglGetInternalformativ glGetInternalformativ;
 
     private @nogc nothrow
     bool loadARBInternalFormatQuery(SharedLib lib, GLSupport contextVersion)
@@ -147,7 +147,7 @@ static if(useARBShaderAtomicCounters) {
     }
 
     extern(System)  alias pglGetActiveAtomicCounterBufferiv = void function(GLuint, GLuint, GLenum, GLint*);
-    __gshared pglGetActiveAtomicCounterBufferiv glGetActiveAtomicCounterBufferiv;
+    extern(C++) __gshared pglGetActiveAtomicCounterBufferiv glGetActiveAtomicCounterBufferiv;
 
     private @nogc nothrow
     bool loadARBShaderAtomicCounters(SharedLib lib, GLSupport contextVersion)
@@ -239,7 +239,7 @@ static if(useARBShaderImageLoadStore) {
         alias pglMemoryBarrier = void function(GLbitfield);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglBindImageTexture glBindImageTexture;
         pglMemoryBarrier glMemoryBarrier;
     }
@@ -274,7 +274,7 @@ static if(useARBTextureStorage) {
         alias pglTextureStorage3DEXT = void function(GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglTexStorage1D glTexStorage1D;
         pglTexStorage2D glTexStorage2D;
         pglTexStorage3D glTexStorage3D;
@@ -321,7 +321,7 @@ static if(useARBTransformFeedbackInstanced) {
         alias pglDrawTransformFeedbackStreamInstanced = void function(GLenum, GLuint, GLuint, GLsizei);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglDrawTransformFeedbackInstanced glDrawTransformFeedbackInstanced;
         pglDrawTransformFeedbackStreamInstanced glDrawTransformFeedbackStreamInstanced;
     }

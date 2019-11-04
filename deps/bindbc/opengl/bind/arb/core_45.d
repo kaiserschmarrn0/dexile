@@ -33,7 +33,7 @@ static if(useARBClipControl) {
     }
 
     extern(System) @nogc nothrow alias pglClipControl = void function(GLenum,GLenum);
-    __gshared pglClipControl glClipControl;
+    extern(C++) __gshared pglClipControl glClipControl;
 
     private @nogc nothrow
     bool loadARBClipControl(SharedLib lib, GLSupport contextVersion)
@@ -192,7 +192,7 @@ static if(useARBDirectStateAccess) {
         alias pglGetQueryBufferObjectui64v = void function(GLuint,GLuint,GLenum,GLintptr);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglCreateTransformFeedbacks glCreateTransformFeedbacks;
         pglTransformFeedbackBufferBase glTransformFeedbackBufferBase;
         pglTransformFeedbackBufferRange glTransformFeedbackBufferRange;
@@ -408,7 +408,7 @@ static if(useARBES31Compatibility) {
     bool hasARBES31Compatibility() { return _hasARBES31Compatibility; }
 
     extern(System) @nogc nothrow alias pglMemoryBarrierByRegion = void function(GLbitfield);
-    __gshared pglMemoryBarrierByRegion glMemoryBarrierByRegion;
+    extern(C++) __gshared pglMemoryBarrierByRegion glMemoryBarrierByRegion;
 
     private @nogc nothrow
     bool loadARBES31Compatibility(SharedLib lib, GLSupport contextVersion)
@@ -432,7 +432,7 @@ static if(useARBGetTextureSubImage) {
         alias pglGetTextureSubImage = void function(GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLenum,GLsizei,void*);
         alias pglGetCompressedTextureSubImage = void function(GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLsizei,void*);
     }
-    __gshared {
+    extern(C++) __gshared {
         pglGetTextureSubImage glGetTextureSubImage;
         pglGetCompressedTextureSubImage glGetCompressedTextureSubImage;
     }
@@ -457,7 +457,7 @@ static if(useARBTextureBarrier) {
     bool hasARBTextureBarrier() { return _hasARBTextureBarrier; }
 
     extern(System) @nogc nothrow alias pglTextureBarrier = void function();
-    __gshared pglTextureBarrier glTextureBarrier;
+    extern(C++) __gshared pglTextureBarrier glTextureBarrier;
 
     private @nogc nothrow
     bool loadARBTextureBarrier(SharedLib lib, GLSupport contextVersion)
@@ -511,7 +511,7 @@ static if(useKHRRobustness) {
         alias pglGetnUniformiv = void function(GLuint,GLint,GLsizei,GLint*);
         alias pglGetnUniformuiv = void function(GLuint,GLint,GLsizei,GLuint*);
     }
-    __gshared {
+    extern(C++) __gshared {
         pglGetGraphicsResetStatus glGetGraphicsResetStatus;
         pglReadnPixels glReadnPixels;
         pglGetnUniformfv glGetnUniformfv;

@@ -116,7 +116,7 @@
 #elif defined(IMGUI_IMPL_OPENGL_LOADER_GLAD)
 #include <glad/glad.h>  // Needs to be initialized with gladLoadGL() in user's code
 #else
-#include "../glad/glad.h" //IMGUI_IMPL_OPENGL_LOADER_CUSTOM
+#include IMGUI_IMPL_OPENGL_LOADER_CUSTOM
 #endif
 #endif
 

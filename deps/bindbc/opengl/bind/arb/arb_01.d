@@ -40,7 +40,7 @@ static if(useARBBindlessTexture) {
         alias pglGetVertexAttribLui64vARB = void function(GLuint,GLenum,GLuint64*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglGetTextureHandleARB glGetTextureHandleARB;
         pglGetTextureSamplerHandleARB glGetTextureSamplerHandleARB;
         pglMakeTextureHandleResidentARB glMakeTextureHandleResidentARB;

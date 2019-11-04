@@ -179,7 +179,7 @@ static if(glSupport >= GLSupport.gl30) {
         alias pglGetStringi = const(char)* function(GLenum,GLuint);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglColorMaski glColorMaski;
         pglGetBooleani_v glGetBooleani_v;
         pglGetIntegeri_v glGetIntegeri_v;

@@ -32,7 +32,7 @@ static if(useARBClearBufferObject) {
         alias pglClearNamedBufferSubDataEXT = void function(GLuint,GLenum,GLenum,GLenum,GLsizeiptr,GLsizeiptr,const(void)*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglClearBufferData glClearBufferData;
         pglClearBufferSubData glClearBufferSubData;
         pglClearNamedBufferDataEXT glClearNamedBufferDataEXT;
@@ -96,7 +96,7 @@ static if(useARBComputeShader) {
         alias pglDispatchComputeIndirect = void function(GLintptr);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglDispatchCompute glDispatchCompute;
         pglDispatchComputeIndirect glDispatchComputeIndirect;
     }
@@ -121,7 +121,7 @@ static if(useARBCopyImage) {
     bool hasARBCopyImage() { return _hasARBCopyImage; }
 
     extern(System) @nogc nothrow alias pglCopyImageSubData = void function(GLuint,GLenum,GLint,GLint,GLint,GLint,GLuint,GLenum,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei);
-    __gshared pglCopyImageSubData glCopyImageSubData;
+    extern(C++) __gshared pglCopyImageSubData glCopyImageSubData;
 
     private @nogc nothrow
     bool loadARBCopyImage(SharedLib lib, GLSupport contextVersion)
@@ -200,7 +200,7 @@ static if(useARBFramebufferNoAttachments) {
         alias pglGetNamedFramebufferParameterivEXT = void function(GLuint,GLenum,GLint*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglFramebufferParameteri glFramebufferParameteri;
         pglGetFramebufferParameteriv glGetFramebufferParameteriv;
         pglNamedFramebufferParameteriEXT glNamedFramebufferParameteriEXT;
@@ -341,7 +341,7 @@ static if(useARBInternalFormatQuery2) {
     }
 
     extern(System) @nogc nothrow alias pglGetInternalformati64v = void function(GLenum,GLenum,GLenum,GLsizei,GLint64*);
-    __gshared pglGetInternalformati64v glGetInternalformati64v;
+    extern(C++) __gshared pglGetInternalformati64v glGetInternalformati64v;
 
     private @nogc nothrow
     bool loadARBInternalFormatQuery2(SharedLib lib, GLSupport contextVersion)
@@ -370,7 +370,7 @@ static if(useARBInvalidateSubdata) {
         alias pglInvalidateSubFramebuffer = void function(GLenum,GLsizei,const(GLenum)*,GLint,GLint,GLsizei,GLsizei);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglInvalidateTexSubImage glInvalidateTexSubImage;
         pglInvalidateTexImage glInvalidateTexImage;
         pglInvalidateBufferSubData glInvalidateBufferSubData;
@@ -407,7 +407,7 @@ static if(useARBMultiDrawIndirect) {
         alias pglMultiDrawElementsIndirect = void function(GLenum,GLenum,const(void)*,GLsizei,GLsizei);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglMultiDrawArraysIndirect glMultiDrawArraysIndirect;
         pglMultiDrawElementsIndirect glMultiDrawElementsIndirect;
     }
@@ -490,7 +490,7 @@ static if(useARBProgramInterfaceQuery) {
         alias pglGetProgramResourceLocationIndex = GLint function(GLuint,GLenum,const(GLchar)*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglGetProgramInterfaceiv glGetProgramInterfaceiv;
         pglGetProgramResourceIndex glGetProgramResourceIndex;
         pglGetProgramResourceName glGetProgramResourceName;
@@ -542,7 +542,7 @@ static if(useARBShaderStorageBufferObject) {
     }
 
     extern(System) @nogc nothrow alias pglShaderStorageBlockBinding = void function(GLuint,GLuint,GLuint);
-    __gshared pglShaderStorageBlockBinding glShaderStorageBlockBinding;
+    extern(C++) __gshared pglShaderStorageBlockBinding glShaderStorageBlockBinding;
 
     private @nogc nothrow
     bool loadARBShaderStorageBufferObject(SharedLib lib, GLSupport contextVersion)
@@ -586,7 +586,7 @@ static if(useARBTextureBufferRange) {
         alias da_glTextureBufferRangeEXT = void function(GLuint,GLenum,GLenum,GLuint,GLintptr,GLsizeiptr);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         da_glTexBufferRange glTexBufferRange;
         da_glTextureBufferRangeEXT glTextureBufferRangeEXT;
     }
@@ -627,7 +627,7 @@ static if(useARBTextureStorageMultisample) {
         alias pglTextureStorage3DMultisampleEXT = void function(GLuint,GLenum,GLsizei,GLenum,GLsizei,GLsizei,GLsizei,GLboolean);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglTexStorage2DMultisample glTexStorage2DMultisample;
         pglTexStorage3DMultisample glTexStorage3DMultisample;
         pglTextureStorage2DMultisampleEXT glTextureStorage2DMultisampleEXT;
@@ -674,7 +674,7 @@ static if(useARBTextureView) {
     }
 
     extern(System) @nogc nothrow alias pglTextureView = void function(GLuint,GLenum,GLuint,GLenum,GLuint,GLuint,GLuint,GLuint);
-    __gshared pglTextureView glTextureView;
+    extern(C++) __gshared pglTextureView glTextureView;
 
     private @nogc nothrow
     bool loadARBTextureView(SharedLib lib, GLSupport contextVersion)
@@ -719,7 +719,7 @@ static if(useARBVertexAttribBinding) {
         alias pglVertexArrayVertexBindingDivisorEXT = void function(GLuint,GLuint,GLuint);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglBindVertexBuffer glBindVertexBuffer;
         pglVertexAttribFormat glVertexAttribFormat;
         pglVertexAttribIFormat glVertexAttribIFormat;
@@ -828,7 +828,7 @@ static if(useKHRDebug) {
         alias pglGetObjectPtrLabel = void function(const(void)*,GLsizei,GLsizei*,GLchar*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglDebugMessageControl glDebugMessageControl;
         pglDebugMessageInsert glDebugMessageInsert;
         pglDebugMessageCallback glDebugMessageCallback;

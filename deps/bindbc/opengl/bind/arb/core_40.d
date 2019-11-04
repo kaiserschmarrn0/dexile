@@ -66,7 +66,7 @@ static if(useARBDrawIndirect) {
         alias pglDrawElementsIndirect = void function(GLenum, GLenum, const(GLvoid)*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglDrawArraysIndirect glDrawArraysIndirect;
         pglDrawElementsIndirect glDrawElementsIndirect;
     }
@@ -126,7 +126,7 @@ static if(useARBGPUShaderFP64) {
         alias pglGetUniformdv = void function(GLuint,GLint,GLdouble*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglUniform1d glUniform1d;
         pglUniform2d glUniform2d;
         pglUniform3d glUniform3d;
@@ -205,7 +205,7 @@ static if(useARBShaderSubroutine) {
         alias pglGetProgramStageiv = void function(GLuint, GLenum, GLenum, GLint*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglGetSubroutineUniformLocation glGetSubroutineUniformLocation;
         pglGetSubroutineIndex glGetSubroutineIndex;
         pglGetActiveSubroutineUniformiv glGetActiveSubroutineUniformiv;
@@ -281,7 +281,7 @@ static if(useARBTesselationShader) {
         alias pglPatchParameterfv = void function(GLenum, const(GLfloat)*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglPatchParameteri glPatchParameteri;
         pglPatchParameterfv glPatchParameterfv;
     }
@@ -322,7 +322,7 @@ static if(useARBTransformFeedback2) {
         alias pglDrawTransformFeedback = void function(GLenum, GLuint);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglBindTransformFeedback glBindTransformFeedback;
         pglDeleteTransformFeedbacks glDeleteTransformFeedbacks;
         pglGenTransformFeedbacks glGenTransformFeedbacks;
@@ -368,7 +368,7 @@ static if(useARBTransformFeedback3) {
         alias pglGetQueryIndexediv = void function(GLenum, GLuint, GLenum, GLint*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglDrawTransformFeedbackStream glDrawTransformFeedbackStream;
         pglBeginQueryIndexed glBeginQueryIndexed;
         pglEndQueryIndexed glEndQueryIndexed;

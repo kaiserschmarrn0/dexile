@@ -287,7 +287,7 @@ extern(System) @nogc nothrow {
     alias pglIsTexture = GLboolean function(GLuint);
 }
 
-__gshared {
+__gshared extern(C++) {
     pglCullFace glCullFace;
     pglFrontFace glFrontFace;
     pglHint glHint;

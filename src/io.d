@@ -2,6 +2,8 @@ module io;
 
 import std.traits;
 
+import mem;
+
 int esnprintf(A...)(char[] str, immutable(char)* fmt, A a) {
     import core.stdc.stdio : snprintf;
     return snprintf(str.ptr, str.length, fmt, a);
@@ -43,15 +45,15 @@ int format_type(T : ulong)(char[] str, T val) if (!is(T == enum)) {
     return esnprintf(str, "%lu", val);
 }
 
-int format_type(T : float)(char[] str, T val) {
+int format_type(T : float)(char[] str, T val) if (!is(T == enum)) {
     return esnprintf(str, "%f", val);
 }
 
-int format_type(T : double)(char[] str, T val) {
+/*int format_type(T : double)(char[] str, T val) {
     return esnprintf(str, "%lf", val);
-}
+}*/
 
-int format_type(T : double)(char[] str, T val) {
+int format_type(T : double)(char[] str, T val) if (!is(T == enum)) {
     return esnprintf(str, "%lf", val);
 }
 
@@ -68,7 +70,24 @@ int format_type(T)(char[] str, T val) if (isPointer!(T)) {
 }
 
 int format_type(T : string)(char[] str, T val) { // for inline literals
+    assert(val != null);
     return esnprintf(str, "%s", val.ptr);
+}
+
+int format_type(T : const(char)*)(char[] str, T val){
+    assert(val != null);
+    return esnprintf(str, "%s", val);
+}
+
+int format_type(T : immutable(char)*)(char[] str, T val){
+    assert(val != null);
+    return esnprintf(str, "%s", val);
+}
+
+int format_type(T : vec!(A), A)(char[] str, T val) {
+    // TODO: print other data?
+    auto data = val.data[0..val.len];
+    return format_type!(typeof(data))(str, data);
 }
 
 int format_type(T)(char[] str, T val) if (isArray!(T)) {
@@ -91,16 +110,21 @@ int format_type(T)(char[] str, T val) if (isArray!(T)) {
     return idx;
 }
 
-int format_type(T : int)(char[] str, T val) if (is(T == enum)) {
-    immutable(immutable(char)*[__traits(allMembers, T).length]) names = [ __traits(allMembers, T) ];
-    if (val < names.length) { // your enum is fucked up :^)
-        return esnprintf(str, "%s (%d)", names[val], val);
+string enum_name(T)(T val) {
+    static foreach (i, mem; __traits(allMembers, T)) {
+        if (val == __traits(getMember, T, mem)) {
+            return mem;
+        }
     }
-    
-    return esnprintf(str, "%d", val);
+
+    return null;
 }
 
-int format_type(T)(char[] str, T val) if (!isArray!(T) && !isPointer!(T)) {
+int format_type(T)(char[] str, T val) if (is(T == enum)) {
+    return esnprintf(str, "%s", enum_name!(T)(val).ptr);
+}
+
+int format_type(T)(char[] str, T val) if (!isArray!(T) && !isPointer!(T) && !is(T == enum)) {
     int idx = 0;
     int err = 0;
     err = esnprintf(str, "{ ");
@@ -156,17 +180,21 @@ int print(A...)(A a) {
     return got;
 }
 
+int println(A...)(A a) {
+    return print(a, '\n');
+}
+
 pragma(inline) int info(A...)(A a, string file = __FILE__, int line = __LINE__) {
-    return print(file, "(", line, ") \033[38;2;100;149;237;1m[info]\033[0m: ", a, '\n');
+    return println(file, "(", line, ") \033[38;2;100;149;237;1m[info]\033[0m: ", a);
 }
 
 pragma(inline) int warn(A...)(A a, string file = __FILE__, int line = __LINE__) {
-    return print(file, "(", line, ") \033[38;2;240;230;140;1m[warn]\033[0m: ", a, '\n');
+    return println(file, "(", line, ") \033[38;2;240;230;140;1m[warn]\033[0m: ", a);
 }
 
 pragma(inline) void die(A...)(A a, string file = __FILE__, int line = __LINE__) {
     import core.stdc.stdlib : exit;
 
-    print(file, "(", line, ") \033[38;2;255;160;122;1m[fatal]\033[0m: ", a, '\n');
+    println(file, "(", line, ") \033[38;2;255;160;122;1m[fatal]\033[0m: ", a);
     exit(0);
 }

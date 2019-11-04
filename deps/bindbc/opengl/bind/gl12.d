@@ -61,7 +61,7 @@ extern(System) @nogc nothrow {
     alias pglCopyTexSubImage3D = void function(GLenum,GLint,GLint,GLint,GLint,GLint,GLint,GLsizei,GLsizei);
 }
 
-__gshared {
+extern(C++) __gshared {
     pglDrawRangeElements glDrawRangeElements;
     pglTexImage3D glTexImage3D;
     pglTexSubImage3D glTexSubImage3D;

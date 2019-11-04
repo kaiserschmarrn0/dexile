@@ -43,7 +43,7 @@ extern(System) @nogc nothrow {
     alias pglUniformMatrix4x3fv = void function(GLint,GLsizei,GLboolean,const(GLfloat)*);
 }
 
-__gshared {
+extern(C++) __gshared {
     pglUniformMatrix2x3fv glUniformMatrix2x3fv;
     pglUniformMatrix3x2fv glUniformMatrix3x2fv;
     pglUniformMatrix2x4fv glUniformMatrix2x4fv;

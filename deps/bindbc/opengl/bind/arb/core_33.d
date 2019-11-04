@@ -69,7 +69,7 @@ static if(useARBBlendFuncExtended) {
         alias pglGetFragDataIndex = GLint function(GLuint, const(GLchar)*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglBindFragDataLocationIndexed glBindFragDataLocationIndexed;
         pglGetFragDataIndex glGetFragDataIndex;
     }
@@ -112,7 +112,7 @@ static if(useARBSamplerObjects) {
         alias pglGetSamplerParameterIuiv = void function(GLuint, GLenum, GLuint*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglGenSamplers glGenSamplers;
         pglDeleteSamplers glDeleteSamplers;
         pglIsSampler glIsSampler;
@@ -171,7 +171,7 @@ static if(useARBTimerQuery) {
         alias pglGetQueryObjectui64v = void function(GLuint, GLenum, GLuint64*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglQueryCounter glQueryCounter;
         pglGetQueryObjecti64v glGetQueryObjecti64v;
         pglGetQueryObjectui64v glGetQueryObjectui64v;
@@ -244,7 +244,7 @@ static if(useARBVertexType2101010Rev) {
         alias pglVertexAttribP4uiv = void function(GLuint, GLenum, GLboolean, const(GLuint)*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         /*
         pglVertexP2ui glVertexP2ui;
         pglVertexP2uiv glVertexP2uiv;

@@ -43,7 +43,7 @@ static if(glSupport >= GLSupport.gl32) {
         alias pglFramebufferTexture = void function(GLenum,GLenum,GLuint,GLint);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglGetInteger64i_v glGetInteger64i_v;
         pglGetBufferParameteri64v glGetBufferParameteri64v;
         pglFramebufferTexture glFramebufferTexture;

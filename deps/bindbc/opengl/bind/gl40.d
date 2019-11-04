@@ -34,7 +34,7 @@ static if(glSupport >= GLSupport.gl40) {
         alias pglMinSampleShading = void function(GLclampf);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglBlendEquationi glBlendEquationi;
         pglBlendEquationSeparatei glBlendEquationSeparatei;
         pglBlendFunci glBlendFunci;

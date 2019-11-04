@@ -23,7 +23,7 @@ imgui() {
     ${CXX} ${CXXFLAGS} ${DEPS}/imgui/imgui_draw.cpp &
     ${CXX} ${CXXFLAGS} ${DEPS}/imgui/imgui_widgets.cpp &
     ${CXX} ${CXXFLAGS} -I/usr/include/SDL2/ -lSDL2 ${DEPS}/imgui/imgui_impl_sdl.cpp &
-    ${CXX} ${CXXFLAGS} -DIMGUI_IMPL_OPENGL_LOADER_CUSTOM=\"../glad/glad.h\" ${DEPS}/imgui/imgui_impl_opengl3.cpp &
+    ${CXX} ${CXXFLAGS} -DIMGUI_IMPL_OPENGL_LOADER_CUSTOM=\"../oldglad/glad.h\" ${DEPS}/imgui/imgui_impl_opengl3.cpp &
 
     wait $(jobs -p)
 
@@ -40,12 +40,13 @@ exile() {
     SRC="src"
     
     DC="ldc2"
-    DFLAGS="-c -gc -betterC -d-version=BindSDL_Static -I=${SRC} -I=${DEPS}"
+    DFLAGS="-c -gc -betterC -d-version=BindSDL_Static -d-version=GL_45 -I=${SRC} -I=${DEPS}"
 
     BLD="obj"
 
     ${DC} ${DFLAGS} ${SRC}/exile.d -of=exile.o &
     ${DC} ${DFLAGS} ${SRC}/io.d -of=io.o &
+    #${DC} -c -gc ${DEPS}/glad/gl/*.d -of=glad.o &
 
     wait $(jobs -p)
 

@@ -211,7 +211,7 @@ static if(useARBFramebufferObject) {
         alias pglFramebufferTextureLayer = void function(GLenum, GLenum, GLuint, GLint, GLint);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglIsRenderbuffer glIsRenderbuffer;
         pglBindRenderbuffer glBindRenderbuffer;
         pglDeleteRenderbuffers glDeleteRenderbuffers;
@@ -285,7 +285,7 @@ static if(useARBMapBufferRange) {
         alias pglFlushMappedBufferRange = void function(GLenum, GLintptr, GLsizeiptr);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglMapBufferRange glMapBufferRange;
         pglFlushMappedBufferRange glFlushMappedBufferRange;
     }
@@ -316,7 +316,7 @@ static if(useARBVertexArrayObject) {
         alias pglIsVertexArray = GLboolean function(GLuint);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglBindVertexArray glBindVertexArray;
         pglDeleteVertexArrays glDeleteVertexArrays;
         pglGenVertexArrays glGenVertexArrays;

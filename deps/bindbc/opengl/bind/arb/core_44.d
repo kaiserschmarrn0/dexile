@@ -40,7 +40,7 @@ static if(useARBBufferStorage) {
         alias pglNamedBufferStorageEXT = void function(GLuint,GLsizeiptr,const(void)*,GLbitfield);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglBufferStorage glBufferStorage;
         pglNamedBufferStorageEXT glNamedBufferStorageEXT;
     }
@@ -81,7 +81,7 @@ static if(useARBClearTexture) {
         alias pglClearTexSubImage = void function(GLuint,GLint,GLint,GLint,GLint,GLsizei,GLsizei,GLsizei,GLenum,GLenum,const(void)*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglClearTexImage glClearTexImage;
         pglClearTexSubImage glClearTexSubImage;
     }
@@ -131,7 +131,7 @@ static if(useARBMultBind) {
         alias pglBindVertexBuffers = void function(GLuint,GLsizei,const(GLuint)*,const(GLintptr)*,const(GLsizei)*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglBindBuffersBase glBindBuffersBase;
         pglBindBuffersRange glBindBuffersRange;
         pglBindTextures glBindTextures;

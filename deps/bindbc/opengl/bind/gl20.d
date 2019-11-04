@@ -194,7 +194,7 @@ extern(System) @nogc nothrow {
     alias pglVertexAttribPointer = void function(GLuint,GLint,GLenum,GLboolean,GLsizei,const(GLvoid)*);
 }
 
-__gshared {
+extern(C++) __gshared {
     pglBlendEquationSeparate glBlendEquationSeparate;
     pglDrawBuffers glDrawBuffers;
     pglStencilOpSeparate glStencilOpSeparate;

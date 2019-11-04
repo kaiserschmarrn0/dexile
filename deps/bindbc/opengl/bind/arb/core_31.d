@@ -102,7 +102,7 @@ static if(useARBUniformBufferObject) {
         alias pglUniformBlockBinding = void function(GLuint, GLuint, GLuint);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglGetUniformIndices glGetUniformIndices;
         pglGetActiveUniformsiv glGetActiveUniformsiv;
         pglGetActiveUniformName glGetActiveUniformName;

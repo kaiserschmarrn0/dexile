@@ -90,7 +90,7 @@ extern(System) @nogc nothrow {
     alias pglGetCompressedTexImage = void function(GLenum,GLint,GLvoid*);
 }
 
-__gshared {
+extern(C++) __gshared {
     pglActiveTexture glActiveTexture;
     pglSampleCoverage glSampleCoverage;
     pglCompressedTexImage3D glCompressedTexImage3D;

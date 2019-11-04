@@ -14,7 +14,7 @@ static if(glSupport >= GLSupport.gl33) {
 
     enum uint GL_VERTEX_ATTRIB_ARRAY_DIVISOR = 0x88FE;
     extern(System) @nogc nothrow alias da_glVertexAttribDivisor = void function(GLuint,GLuint);
-    __gshared da_glVertexAttribDivisor glVertexAttribDivisor;
+    extern(C++) __gshared da_glVertexAttribDivisor glVertexAttribDivisor;
 
     package(bindbc.opengl) @nogc nothrow
     bool loadGL33(SharedLib lib, GLSupport contextVersion)

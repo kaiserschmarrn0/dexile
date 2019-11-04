@@ -65,7 +65,7 @@ extern(System) @nogc nothrow {
     alias pglGetBufferPointerv = void function(GLenum,GLenum,GLvoid*);
 }
 
-__gshared {
+extern(C++) __gshared {
     pglGenQueries glGenQueries;
     pglDeleteQueries glDeleteQueries;
     pglIsQuery glIsQuery;

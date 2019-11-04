@@ -55,7 +55,7 @@ extern(System) @nogc nothrow {
     alias pglBlendEquation = void function(GLenum);
 }
 
-__gshared {
+extern(C++) __gshared {
     pglBlendFuncSeparate glBlendFuncSeparate;
     pglMultiDrawArrays glMultiDrawArrays;
     pglMultiDrawElements glMultiDrawElements;

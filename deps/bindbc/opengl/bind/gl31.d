@@ -53,7 +53,7 @@ static if(glSupport >= GLSupport.gl31) {
         alias pglPrimitiveRestartIndex = void function(GLuint);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglDrawArraysInstanced glDrawArraysInstanced;
         pglDrawElementsInstanced glDrawElementsInstanced;
         pglTexBuffer glTexBuffer;

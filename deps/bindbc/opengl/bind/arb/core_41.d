@@ -50,7 +50,7 @@ static if(useARBES2Compatibility) {
         alias pglClearDepthf = void function(GLclampf);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglReleaseShaderCompiler glReleaseShaderCompiler;
         pglShaderBinary glShaderBinary;
         pglGetShaderPrecisionFormat glGetShaderPrecisionFormat;
@@ -93,7 +93,7 @@ static if(useARBGetProgramBinary) {
         alias pglProgramParameteri = void function(GLuint,GLenum,GLint);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglGetProgramBinary glGetProgramBinary;
         pglProgramBinary glProgramBinary;
         pglProgramParameteri glProgramParameteri;
@@ -194,7 +194,7 @@ static if(useARBSeparateShaderObjects) {
         alias pglGetProgramPipelineInfoLog = void function(GLuint, GLsizei, GLsizei*, GLchar*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglUseProgramStages glUseProgramStages;
         pglActiveShaderProgram glActiveShaderProgram;
         pglCreateShaderProgramv glCreateShaderProgramv;
@@ -347,7 +347,7 @@ static if(useARBVertexAttrib64Bit) {
         alias pglGetVertexAttribLdv = void function(GLuint, GLenum, GLdouble*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglVertexAttribL1d glVertexAttribL1d;
         pglVertexAttribL2d glVertexAttribL2d;
         pglVertexAttribL3d glVertexAttribL3d;
@@ -409,7 +409,7 @@ static if(useARBViewportArray) {
         alias pglGetDoublei_v = void function(GLenum, GLuint, GLdouble*);
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglViewportArrayv glViewportArrayv;
         pglViewportIndexedf glViewportIndexedf;
         pglViewportIndexedfv glViewportIndexedfv;

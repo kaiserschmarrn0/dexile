@@ -20,7 +20,7 @@ static if(glSupport >= GLSupport.gl45) {
         alias pglGetnUniformdv = void function( GLuint,GLint,GLsizei,GLdouble* );
     }
 
-    __gshared {
+    extern(C++) __gshared {
         pglGetnTexImage glGetnTexImage;
         pglGetnCompressedTexImage glGetnCompressedTexImage;
         pglGetnUniformdv glGetnUniformdv;
