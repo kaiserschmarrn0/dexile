@@ -3,8 +3,6 @@ import bindbc.opengl;
 
 import stb.image;
 
-//import imgui;
-
 import io;
 
 extern (C++) void cpf(int a);
